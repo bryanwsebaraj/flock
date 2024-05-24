@@ -1,0 +1,39 @@
+CertiKOS
+=========================
+
+## 1. Make the CertiKOS kernel
+
+### Mac
+
+To compile the kernel code, the following tools needs to be installed:
+
+- i686-elf-binutils
+- i686-elf-gcc
+
+If the [Homebrew package manager](https://brew.sh) is used, it is suggested to use the following script to install the above tools.
+```
+brew tap chrihop/gcc_cross_compilers
+brew install i686-elf-binutils i686-elf-gcc
+```
+
+In addition, for the requirement of debugging the kernel, a cross-compiler version of `gdb` is also provided:
+
+```
+brew install i686-elf-gdb
+```
+
+## 2. Build QEMU (Raw) disk image
+
+After the tools are successfully installed, please try:
+```
+make
+```
+to compile the kernel, and build the disk image.
+
+## 3. Debug the code
+
+### QEMU
+
+Use command `make qemu` to launch the QEMU virtual machine, and start the CertiKOS OS.
+
+To debug the kernel, use command `make qemu-gdb` to launch QEMU, and then `make gdb` to start gdb for current machine architecture in another terminal tab ('CMD + T').
